@@ -1,0 +1,70 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:f="sap.ui.layout"
+        xmlns:core="sap.ui.core">
+<Table id="productsTable"
+		mode="SingleSelectLeft"
+		selectionChange="onSelectionChange"
+				items="{odata>/DeliveryApplications}">
+						<headerToolbar>
+							<OverflowToolbar>
+								<Title text="{i18n>deliveryapplicationTableName}" level="H2"/>
+								<ToolbarSpacer/>
+								<Button id="createBtn" text="{i18n>createDelivery}" type="Transparent"
+									press=".onNavCreateDeliveryApllication" />
+							</OverflowToolbar>
+						</headerToolbar>
+							<columns>
+								<Column id="deliveryAppId" width="12em">           
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryapplicationColumnId}"/>
+									</HBox>
+								</Column>
+								<Column id="deliveryAppSenderAddress" minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryapplicationColumnSenderAddress}"/>
+									</HBox>
+								</Column>
+								<Column id="deliveryAppDistanationAdderss" minScreenWidth="Tablet" demandPopin="true">
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryapplicationColumnDistinationAddress}"/>
+									</HBox>
+								</Column>
+								<Column id="deliveryAppDelivetyDate" minScreenWidth="Tablet" demandPopin="true">
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryapplicationColumnDeliveryDate}"/>
+									</HBox>
+								</Column>
+								<Column id="deliveryAppCustomer" minScreenWidth="Tablet" demandPopin="true">
+									<HBox alignItems="Center"
+										justifyContent="Center"
+										class="HBoxStyle">
+										<Text text="{i18n>deliveryapplicationColumnCustomer}"/>
+									</HBox>
+								</Column>
+							</columns>
+							<items>
+							<ColumnListItem
+								type="Active"
+								press=".onNavPressThird">
+								<cells>
+									<ObjectIdentifier title="{odata>Id}" class="sapMTableContentMargin" />
+									<Text text="{odata>FromAddress}" wrapping="false" class="sapMSampleTextMaxLinesText"/>
+									<Text text="{odata>ToAddress}" wrapping="false" class="sapMSampleTextMaxLinesText"/>
+									<Text text="{path: 'odata>CreatedDate', 
+												formatter: '.formatter.dateConvert'
+									}" wrapping="false" class="sapMSampleTextMaxLinesText"/>
+									<Text text="{path: 'odata>CustomerName'}"/>
+								</cells>
+							</ColumnListItem>
+							</items>
+						</Table>
+                        </core:FragmentDefinition>
